@@ -1,9 +1,4 @@
-// import axios from "axios";
-
-let token = localStorage.getItem("reachinbox-auth");
-token = token ? JSON.parse(token) : "";
-
-export const getMailList = async () => {
+export const getMailList = async (token: string) => {
   try {
     const response = await fetch(
       "https://hiring.reachinbox.xyz/api/v1/onebox/list",
@@ -13,6 +8,7 @@ export const getMailList = async () => {
         },
       }
     );
+    console.log(response);
     const data = await response.json();
     return data.data;
   } catch (err) {
@@ -20,7 +16,7 @@ export const getMailList = async () => {
   }
 };
 
-export const getMailMasseges = async (id: number) => {
+export const getMailMessages = async (id: number, token: string) => {
   try {
     const response = await fetch(
       `https://hiring.reachinbox.xyz/api/v1/onebox/messages/${id}`,
@@ -37,7 +33,11 @@ export const getMailMasseges = async (id: number) => {
   }
 };
 
-export const postMailMasseges = async (id: number, messages: any) => {
+export const postMailMessages = async (
+  id: number,
+  messages: any,
+  token: string
+) => {
   try {
     const response = await fetch(
       `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${id}`,
@@ -59,7 +59,7 @@ export const postMailMasseges = async (id: number, messages: any) => {
   }
 };
 
-export const deleteMailResponse = async (id: number) => {
+export const deleteMailResponse = async (id: number, token: string) => {
   try {
     const response = await fetch(
       `https://hiring.reachinbox.xyz/api/v1/onebox/messages/${id}`,

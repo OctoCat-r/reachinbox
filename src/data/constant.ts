@@ -1,5 +1,5 @@
 import { NavItem } from "@/types";
-//flag- change the names 
+//flag- change the names
 
 export const navItems: NavItem[] = [
   {
@@ -33,8 +33,8 @@ export const navItems: NavItem[] = [
     label: "kanban",
   },
   {
-    title: "logout",
-    href: "/",
+    title: "Inbox",
+    href: "/dashboard/mails",
     icon: "InboxIcon",
     label: "login",
   },

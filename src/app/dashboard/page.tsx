@@ -3,7 +3,7 @@ import EmptySectionImage from "@/components/image-svg";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import * as jwt from "jsonwebtoken";
-import { getMailList, getMailMasseges } from "@/action";
+import { getMailList, getMailMessages } from "@/action";
 import BlankScreen from "@/components/blank-screen";
 const Page = () => {
   //   const [token, setToken] = useState<string | null>(null);
@@ -34,20 +34,24 @@ const Page = () => {
     fetchData();
   }, [token]);
   const fetchData = () => {
-    getMailList()
-      .then((res) => {
-        console.log(res);
-        setMail(res);
-        if (res?.length > 0) {
-          setSingleMail(res[0]);
-          const id: number = res[0]?.threadId;
-          if (id !== undefined) return getMailMasseges(id);
-          else console.log("error id not found");
-        } else console.log("Email not Found");
-      })
-      .then((messages) => setSingleMail(messages))
-      .catch((error) => console.error("Error:", error));
+    console.log(token);
+    token &&
+      getMailList(token)
+        .then((res) => {
+          console.log(res);
+          setMail(res);
+          if (res?.length > 0) {
+            setSingleMail(res[0]);
+            const id: number = res[0]?.threadId;
+            if (id !== undefined && token !== null)
+              return getMailMessages(id, token);
+            else console.log("error id not found");
+          } else console.log("Email not Found");
+        })
+        .then((messages) => setSingleMail(messages))
+        .catch((error) => console.error("Error:", error));
   };
+  console.log(mail, " hello from dashboard");
   return <BlankScreen />;
 };
 
