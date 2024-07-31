@@ -39,7 +39,12 @@ export const postMailMessages = async (
   token: string
 ) => {
   try {
-    console.log(messages);
+    // console.log(messages);
+    const body = JSON.stringify({
+      ...messages,
+      references: messages.references.map((reference: any) => `${reference}`),
+    });
+    console.log(body);
     const response = await fetch(
       `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${id}`,
       {
@@ -48,9 +53,13 @@ export const postMailMessages = async (
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(messages),
+        // body: JSONmessages,
+        body: body,
       }
     );
+    // if (!response.ok) {
+    //   throw new Error(`HTTP error! status: ${response.status}`);
+    // }
     const data = await response.json();
     console.log("Posted:", data);
     return data;

@@ -10,25 +10,25 @@ export const navItems: NavItem[] = [
   },
   {
     title: "Profile",
-    href: "/dashboard/profile",
+    href: "/dashboard",
     icon: "UserRoundSearchIcon",
     label: "user",
   },
   {
     title: "Fund Transfer",
-    href: "/dashboard/fund-transfer",
+    href: "/dashboard",
     icon: "Mail",
     label: "employee",
   },
   {
     title: "Sponser Team",
-    href: "/dashboard/somethin",
+    href: "/dashboard",
     icon: "Send",
     label: "profile",
   },
   {
     title: "Payout Summary",
-    href: "/dashboard/kanban",
+    href: "/dashboard",
     icon: "List",
     label: "kanban",
   },
@@ -40,7 +40,7 @@ export const navItems: NavItem[] = [
   },
   {
     title: "aman",
-    href: "/",
+    href: "/dashboard",
     icon: "BarChart2",
     label: "login",
   },

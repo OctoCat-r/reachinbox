@@ -1,8 +1,11 @@
 "use client";
-import { ChevronDown, Eye, Reply, X, Zap } from "lucide-react";
+import { ChevronDown, Eye, Reply, X, Zap, Bold, Link } from "lucide-react";
 import React, { MouseEventHandler, useEffect, useState } from "react";
 // import { postMailMasseges } from "../actions/actions";
 import { postMailMessages } from "@/action";
+import ReactQuill, { Quill } from "react-quill";
+import "react-quill/dist/quill.snow.css";
+// import { Toolbar } from "./toolbar";
 
 interface sendReplyProps {
   handleCancel: MouseEventHandler<HTMLDivElement>;
@@ -11,17 +14,25 @@ interface sendReplyProps {
 }
 
 interface initalstateType {
+  toName: string;
   to: string;
   from: string;
+  fromName: string;
   subject: string;
   body: string;
+  references: any[];
+  inReplyTo: string;
 }
 
 const initalState: initalstateType = {
+  toName: "",
   to: "",
   from: "",
+  fromName: "",
   subject: "",
   body: "",
+  references: [],
+  inReplyTo: "",
 };
 const SendReply: React.FC<sendReplyProps> = ({
   currColor,
@@ -35,16 +46,20 @@ const SendReply: React.FC<sendReplyProps> = ({
   token = localStorage.getItem("reachinbox-auth");
   token = token ? JSON.parse(token) : "";
   console.log("token :-", token);
+  console.log(singleMail);
   useEffect(() => {
     setFormData({
       ...formData,
-      // toName: singleMail.toName,
-      // fromName: singleMail.fromEmail,
-      to: singleMail.toEmail,
-      from: singleMail.fromEmail,
+      toName: singleMail.fromName,
+      fromName: singleMail.toName,
+      to: singleMail.fromEmail,
+      from: singleMail.toEmail,
+      references: [singleMail.references],
+      inReplyTo: singleMail.inReplyTo,
     });
   }, []);
   console.log(token);
+
   const handlesubmit = () => {
     console.log(formData, "data");
     console.log(token);
@@ -116,6 +131,16 @@ const SendReply: React.FC<sendReplyProps> = ({
             onChange={(e) => setFormData({ ...formData, body: e.target.value })}
           />
         </div>
+        {/* <div className={`text-[12px] p-2 text-left bg-white dark:bg-[#141517]`}>
+          <ReactQuill
+            theme="snow"
+            
+            value={formData.body}
+            onChange={(value: string) =>
+              setFormData({ ...formData, body: value })
+            }
+          />
+        </div> */}
       </div>
       <div className="h-[54px] w-full ">
         <hr className="border-t border-gray-300 dark:border-gray-700 mb-2 " />
@@ -134,6 +159,8 @@ const SendReply: React.FC<sendReplyProps> = ({
             <Eye className="h-4" />
             <button>Preview Email</button>
           </div>
+          <Bold />
+          <Link />
         </div>
       </div>
     </div>

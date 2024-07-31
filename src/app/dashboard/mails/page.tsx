@@ -10,6 +10,7 @@ import { Modal } from "@/components/modal";
 import SearchBar from "@/components/searchbar";
 import { ChevronDown } from "lucide-react";
 import ReplySection from "@/components/reply-section";
+import UserDetails from "@/components/user-details";
 // import { render } from "react-dom";
 const Page = () => {
   //   const [token, setToken] = useState<string | null>(null);
@@ -144,6 +145,7 @@ const Page = () => {
         </div>
       </div>
       <ReplySection currColor={currColor} singleMail={singleMail} />
+      <UserDetails singleMail={singleMail} />
 
       <div>
         <Modal isOpen={isModalOpen} onClose={closeModal}>

@@ -42,7 +42,13 @@ export default function Sidebar({ className }: SidebarProps) {
           <div className="mt-3 space-y-3">
             <DashboardNav items={navItems} />
           </div>
-          
+          <div className="w-12 h-[70px] flex justify-center items-center mt-24">
+            <p
+              className={`w-8 bg-green-900 h-8 rounded-3xl  text-white p-1 text-center`}
+            >
+              {"AJ"}
+            </p>
+          </div>
         </div>
       </div>
     </nav>
