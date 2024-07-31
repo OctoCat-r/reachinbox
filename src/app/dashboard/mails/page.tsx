@@ -91,6 +91,7 @@ const Page = () => {
         .then((messages) => setSingleMail(messages))
         .catch((error) => console.error("Error:", error));
   };
+  console.log(mail);
   useEffect(() => {
     fetchData();
   }, []);
@@ -103,7 +104,8 @@ const Page = () => {
           <InboxHeader currColor={currColor} />
         </div>
         <p className="text-left  text-[14px] mt-2.5">
-          25/25 <span className=" text-[#7F7F7F]">Inboxes selected</span>
+          {mail?.length} / {mail?.length}{" "}
+          <span className=" text-[#7F7F7F]">Inboxes selected</span>
         </p>
         <div className=" mt-2 h-11 ">
           <SearchBar />
@@ -127,7 +129,7 @@ const Page = () => {
         <hr className="mt-2.5" />
         <div className=" text-left">
           {mail?.length > 0 &&
-            mail.map((item: any) => {
+            mail?.map((item: any) => {
               return (
                 <div key={item.id}>
                   <InboxEmailCard
@@ -142,6 +144,35 @@ const Page = () => {
         </div>
       </div>
       <ReplySection currColor={currColor} singleMail={singleMail} />
+
+      <div>
+        <Modal isOpen={isModalOpen} onClose={closeModal}>
+          <div className="w-[440px] h-[240px] text-white flex items-center justify-center ">
+            <div className=" h-full ">
+              <h1 className="text-[24px] font-bold mt-8  text-center">
+                Are you Sure ?
+              </h1>
+              <p className="mt-8 text-[#E8E8E8]">
+                Your selected email will be deleted.
+              </p>
+              <div className="mt-8 flex justify-center gap-5 ">
+                <button
+                  className="w-[120px] h-12 bg-[#25262B] "
+                  onClick={closeModal}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="w-[140px] h-12 bg-[#FA5252] "
+                  onClick={deleteEmail}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </Modal>
+      </div>
       {/* <UserDetails currColor={currColor} /> */}
     </div>
   );

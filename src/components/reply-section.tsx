@@ -72,7 +72,7 @@ const ReplySection: React.FC<replyProps> = ({ currColor, singleMail }) => {
           <div
             className={`absolute mt-[134px] w-[768px] ml-4 rounded-2xl  z-10  overflow-hidden  h-[450px] ${
               currColor ? "bg-[#141517]" : "bg-white"
-            }  border border-gray-700`}
+            }  border border-gray-300 dark:border-gray-700`}
           >
             <SendReply
               currColor={currColor}
@@ -83,7 +83,7 @@ const ReplySection: React.FC<replyProps> = ({ currColor, singleMail }) => {
         )}
       </div>
 
-      <div className="w-[100px] h-10 bg-[#4B63DD]  ml-4 mb-3 rounded gap-1 flex justify-center items-center">
+      <div className="w-[100px] h-10 bg-gradient-to-r from-[#4B63DD] to-[#0524BF] ml-4 mb-3 rounded gap-1 flex justify-center items-center p-2">
         <Reply color="white" />
         <button className="text-white" onClick={() => setShowReply(!showReply)}>
           Reply

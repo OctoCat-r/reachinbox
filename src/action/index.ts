@@ -39,6 +39,7 @@ export const postMailMessages = async (
   token: string
 ) => {
   try {
+    console.log(messages);
     const response = await fetch(
       `https://hiring.reachinbox.xyz/api/v1/onebox/reply/${id}`,
       {

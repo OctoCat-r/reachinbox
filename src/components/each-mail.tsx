@@ -6,6 +6,7 @@ interface SingleProps {
   fromEmail: string;
   toEmail: string;
   body: string;
+  sentAt: string;
 }
 const SingleMail: React.FC<SingleProps> = ({
   currColor,
@@ -13,16 +14,26 @@ const SingleMail: React.FC<SingleProps> = ({
   fromEmail,
   toEmail,
   body,
+  sentAt,
 }) => {
+  const EmailBody = ({ body }: { body: string }) => {
+    return (
+      <div
+        dangerouslySetInnerHTML={{ __html: body }}
+        className="text-slate-800 dark:text-gray-200"
+      />
+    );
+  };
+
   return (
-    <div className="mr-4  border border-gray-700 p-3 text-[14px] flex flex-col gap-2.5 text-left mb-3">
+    <div className="mr-4  border border-gray-200 dark:border-gray-800 p-3 text-[14px] flex flex-col gap-2.5 text-left mb-3">
       <div className="flex justify-between">
         <p>{subject}</p>
-        <p className="text-[#AEAEAE]">20 june 2022 : 9:16AM</p>
+        <p className="text-[#AEAEAE]">{sentAt}</p>
       </div>
       <p className="text-[#AEAEAE]">from : {fromEmail} </p>
       <p className="text-[#AEAEAE]">to : {toEmail}</p>
-      <p
+      {/* <p
         className={`${
           currColor ? "text-[#b7abab]" : "text-[#2a2626]"
         } w-[500px]`}
@@ -39,11 +50,7 @@ const SingleMail: React.FC<SingleProps> = ({
         }{" "}
         ,
       </p>
-      <p
-        className={`${
-          currColor ? "text-[#bfb4b4]" : "text-[#2a2626]"
-        } w-[500px]`}
-      >
+      <p className={` text-gray-600 dark: w-[500px]`}>
         {body
           .split("<p>")
           .join("")
@@ -53,7 +60,8 @@ const SingleMail: React.FC<SingleProps> = ({
           .join("")
           .split(",")
           .slice(1)}
-      </p>
+      </p> */}
+      <EmailBody body={body} />
     </div>
   );
 };

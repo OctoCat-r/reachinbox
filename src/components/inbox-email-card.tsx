@@ -5,6 +5,7 @@ type inboxProps = {
   fromEmail: string;
   subject: string;
   id: number;
+  sentAt: string;
   handleChangeEmail: any;
   threadId: number;
 };
@@ -14,16 +15,26 @@ const InboxEmailCard: React.FC<inboxProps> = ({
   id,
   fromEmail,
   subject,
+  sentAt,
   handleChangeEmail,
 }) => {
+  // const formattedDate = sentAt.toDateString();
+  const dateOptions: Intl.DateTimeFormatOptions = {
+    month: "short",
+    day: "numeric",
+  };
+
+  const date = new Date(sentAt);
+  console.log(date, "hello date");
+  const formattedDate = date.toLocaleDateString("en-US", dateOptions);
   return (
     <div
-      className="w-full pt-3 pb-3 pl-2"
+      className="w-full pt-3 pb-3 pl-2 mb-5"
       onClick={() => handleChangeEmail(threadId)}
     >
-      <div className="flex gap-1 justify-between text-[12px]">
+      <div className="flex gap-4 justify-between text-[12px]">
         <p>{fromEmail}</p>
-        <p className="text-gray-400"> Mar 7</p>
+        <p className="text-gray-400">{formattedDate}</p>
       </div>
       <p className="text-xs text-gray-400">{subject}</p>
       <div className="flex text-[10px] gap-3 mt-2">
