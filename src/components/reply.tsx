@@ -159,7 +159,7 @@ const SendReply: React.FC<sendReplyProps> = ({
             <Eye className="h-4" />
             <button>Preview Email</button>
           </div>
-          <Bold />
+          <Bold className="h-4"/>
           <Link />
         </div>
       </div>
