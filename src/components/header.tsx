@@ -18,7 +18,7 @@ const Workspace = () => {
       <div className="w-[210px] h-8 mr-5 flex justify-center items-center gap-5">
         <ThemeSwitcher />
         <div className="flex justify-center items-center gap-2">
-          <p className="text-[12px]">Aman's Workspace </p>
+          <p className="text-[12px]">Amans Workspace </p>
           <span>
             {" "}
             <ChevronDown />

@@ -95,7 +95,7 @@ const Page = () => {
   console.log(mail);
   useEffect(() => {
     fetchData();
-  }, []);
+  },[]);
 
   console.log(mail, "hello i ma in mail");
   return (
