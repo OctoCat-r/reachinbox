@@ -72,7 +72,7 @@ const Page = () => {
     };
   }, [isModalOpen]);
 
-  const handleChange = (index: number) => setShowEmailDesktop(index);
+  // const handleChange = (index: number) => setShowEmailDesktop(index);
 
   const fetchData = () => {
     console.log(token);
@@ -95,7 +95,9 @@ const Page = () => {
   console.log(mail);
   useEffect(() => {
     fetchData();
-  },[]);
+  }, []);
+
+  const mailLength = mail?.length || 0;
 
   console.log(mail, "hello i ma in mail");
   return (
@@ -129,7 +131,7 @@ const Page = () => {
         </div>
         <hr className="mt-2.5" />
         <div className=" text-left">
-          {mail?.length > 0 &&
+          {mailLength > 0 &&
             mail?.map((item: any) => {
               return (
                 <div key={item.id}>

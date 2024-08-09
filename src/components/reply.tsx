@@ -3,8 +3,7 @@ import { ChevronDown, Eye, Reply, X, Zap, Bold, Link } from "lucide-react";
 import React, { MouseEventHandler, useEffect, useState } from "react";
 // import { postMailMasseges } from "../actions/actions";
 import { postMailMessages } from "@/action";
-import ReactQuill, { Quill } from "react-quill";
-import "react-quill/dist/quill.snow.css";
+
 // import { Toolbar } from "./toolbar";
 
 interface sendReplyProps {
@@ -159,7 +158,7 @@ const SendReply: React.FC<sendReplyProps> = ({
             <Eye className="h-4" />
             <button>Preview Email</button>
           </div>
-          <Bold className="h-4"/>
+          <Bold className="h-4" />
           <Link />
         </div>
       </div>
