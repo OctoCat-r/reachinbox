@@ -17,19 +17,19 @@ const Page = () => {
     console.log(token);
     if (token) {
       let ParseData = jwt.decode(token, { complete: true }) as any;
-      localStorage.setItem("reachinbox-auth", JSON.stringify(token));
+      window.localStorage.setItem("reachinbox-auth", JSON.stringify(token));
       console.log(ParseData);
       const { header, payload, signature } = ParseData;
       const { user } = payload;
-      localStorage.setItem(
+      window.localStorage.setItem(
         "reachinbox-auth-firstname",
         JSON.stringify(user.firstname)
       );
-      localStorage.setItem(
+      window.localStorage.setItem(
         "reachinbox-auth-lastname",
         JSON.stringify(user.lastName)
       );
-      localStorage.setItem("reachinbox-auth-email", JSON.stringify(user.email));
+      window.localStorage.setItem("reachinbox-auth-email", JSON.stringify(user.email));
     }
     fetchData();
   }, [token]);

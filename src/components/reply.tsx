@@ -42,7 +42,7 @@ const SendReply: React.FC<sendReplyProps> = ({
   let token: string | null = null;
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  token = localStorage.getItem("reachinbox-auth");
+  token = window.localStorage.getItem("reachinbox-auth");
   token = token ? JSON.parse(token) : "";
   console.log("token :-", token);
   console.log(singleMail);

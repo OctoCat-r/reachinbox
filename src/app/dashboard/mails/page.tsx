@@ -20,7 +20,7 @@ const Page = () => {
   const [showEmailDesktop, setShowEmailDesktop] = useState(0);
   const [render, setRender] = useState<Boolean>(false);
   const currColor = true;
-  let token = localStorage.getItem("reachinbox-auth");
+  let token = window.localStorage.getItem("reachinbox-auth");
   token = token ? JSON.parse(token) : "";
 
   const deleteEmail = () => {

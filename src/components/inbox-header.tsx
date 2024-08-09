@@ -15,7 +15,7 @@ const InboxHeader: React.FC<headerProps> = ({ currColor }) => {
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    token = localStorage.getItem("reachinbox-auth");
+    token = window.localStorage.getItem("reachinbox-auth");
     token = token ? JSON.parse(token) : "";
   }, []);
 
