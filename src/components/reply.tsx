@@ -39,14 +39,15 @@ const SendReply: React.FC<sendReplyProps> = ({
   singleMail,
 }) => {
   const [formData, setFormData] = useState(initalState);
-  let token: string | null = null;
+
+  const [token, setToken] = useState<string | null>("");
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  token = window.localStorage.getItem("reachinbox-auth");
-  token = token ? JSON.parse(token) : "";
-  console.log("token :-", token);
-  console.log(singleMail);
+
   useEffect(() => {
+    let token = window.localStorage.getItem("reachinbox-auth");
+    token = token ? JSON.parse(token) : "";
+    setToken(token!);
     setFormData({
       ...formData,
       toName: singleMail.fromName,

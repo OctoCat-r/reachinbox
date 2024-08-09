@@ -20,8 +20,7 @@ const Page = () => {
   const [showEmailDesktop, setShowEmailDesktop] = useState(0);
   const [render, setRender] = useState<Boolean>(false);
   const currColor = true;
-  let token = window.localStorage.getItem("reachinbox-auth");
-  token = token ? JSON.parse(token) : "";
+  const [token, setToken] = useState<string>("");
 
   const deleteEmail = () => {
     const id: number = singleMail[0].threadId;
@@ -74,8 +73,7 @@ const Page = () => {
 
   // const handleChange = (index: number) => setShowEmailDesktop(index);
 
-  const fetchData = () => {
-    console.log(token);
+  const fetchData = (token: string | null | undefined) => {
     token &&
       getMailList(token)
         .then((res) => {
@@ -94,7 +92,10 @@ const Page = () => {
   };
   console.log(mail);
   useEffect(() => {
-    fetchData();
+    let token = window.localStorage.getItem("reachinbox-auth");
+    token = token ? JSON.parse(token) : "";
+    setToken(token!);
+    fetchData(token);
   }, []);
 
   const mailLength = mail?.length || 0;

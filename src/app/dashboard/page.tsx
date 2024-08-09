@@ -1,7 +1,6 @@
 "use client";
 import EmptySectionImage from "@/components/image-svg";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import * as jwt from "jsonwebtoken";
 import { getMailList, getMailMessages } from "@/action";
 import BlankScreen from "@/components/blank-screen";
