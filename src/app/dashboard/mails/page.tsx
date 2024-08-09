@@ -3,7 +3,7 @@ import EmptySectionImage from "@/components/image-svg";
 import React, { useEffect, useState } from "react";
 
 import { deleteMailResponse, getMailList, getMailMessages } from "@/action";
-import BlankScreen from "@/components/blank-screen";
+
 import InboxEmailCard from "@/components/inbox-email-card";
 import InboxHeader from "@/components/inbox-header";
 import { Modal } from "@/components/modal";
